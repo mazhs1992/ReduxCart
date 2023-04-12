@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { uiActions } from './ui-slice';
 
+
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
@@ -52,7 +53,7 @@ export const sendCartData = (cart) => {
         )
 
         const sendRequest = async () => {
-            const responce = await fetch('https://foodappmarx-default-rtdb.europe-west1.firebasedatabase.app/cart.json', {
+            const responce = await fetch(process.env.REACT_APP_FIREBASE_URL, {
                 method: 'PUT',
                 body: JSON.stringify(cart)
             })
